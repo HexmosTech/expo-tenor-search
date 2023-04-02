@@ -1,6 +1,8 @@
 // import findCategories from "./Categories/Find";
-import listTags from "./Categories/Tags";
-import findCategories from "./Categories/Find"
+// import listTags from "./Categories/Tags";
+// import findCategories from "./Categories/Find"
+const listTags = require('./Categories/Tags')
+const findCategories = require('./Categories/Find')
 
 export default function (Credentials, Utilities) {
   const Methods = {};

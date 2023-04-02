@@ -1,5 +1,8 @@
-import Utilities from './src/Tools/Utilities';
-import TenorJS from './src';
+// import Utilities from './src/Tools/Utilities';
+// import TenorJS from './src';
+
+// const Utilities = require('./src/Tools/Utilities')
+const TenorJS  = require('./src')
 
 const Filters = ['off', 'low', 'medium', 'high'];
 const MediaFilters = ['gif', 'mp4', 'nanomp4', 'nanogif', 'tinymp4', 'tinygif'];

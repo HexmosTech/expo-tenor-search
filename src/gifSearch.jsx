@@ -5,7 +5,7 @@ import {
   TextInput,
   TouchableOpacity,
 } from 'react-native'
-import tenor from '../../src/tenorjs'
+import tenor from '../src/tenorjs/src/index'
 import { WebView } from 'react-native-webview'
 const he = require('he')
 

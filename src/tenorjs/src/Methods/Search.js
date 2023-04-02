@@ -1,6 +1,10 @@
-import Find from './Search/Find';
-import Query from './Search/Query';
-import Random from './Search/Random';
+// import Find from './Search/Find';
+// import Query from './Search/Query';
+// import Random from './Search/Random';
+
+const Find = require('./Search/Find');
+const Query = require('./Search/Query');
+const Random = require('./Search/Random');
 
 export default function Search(Credentials, Utilities) {
   const Methods = {};
