@@ -1,0 +1,7 @@
+# Ignore development files
+/src
+/test
+/docs
+*.config.js
+*.config.cjs
+*.md

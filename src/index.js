@@ -1,3 +1,3 @@
-import GifSearch from './gifSearch'
+import GifSearch from "./gifSearch";
 
-export default GifSearch
+export {GifSearch};
