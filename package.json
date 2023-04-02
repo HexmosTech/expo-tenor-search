@@ -5,8 +5,7 @@
   "author": "Hexmos Technologies",
   "license": "MIT",
   "repository": "https://github.com/HexmosTech/expo-tenor-search.git",
-  "main": "dist/index.js",
-  "module": "dist/index.modern.js",
+  "main": "src/index.js",
   "source": "src/index.js",
   "engines": {
     "node": ">=10"
