@@ -5,7 +5,7 @@ import {
   TextInput,
   TouchableOpacity,
 } from 'react-native'
-import tenor from '../src/tenorjs/src/index'
+import tenor from './tenorjs/src/index'
 import { WebView } from 'react-native-webview'
 const he = require('he')
 
@@ -43,7 +43,7 @@ export default function GifSearch({ tenorkey, MediaFilter, onGifSelect }) {
       setPreviousCategory(data.nativeEvent.data)
     }
   }
-
+  
   // List of gifs
   useEffect(() => {
     if (selectedCategory === 'selectedGif') {
