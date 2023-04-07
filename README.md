@@ -10,18 +10,29 @@
 npm install --save expo-tenor-search
 ```
 
+```sh
+yarn add expo-tenor-search
+yarn add HexmosTech/expo-tenor-search.git#master
+
+```
+
 ## Usage
 
 ```jsx
-import React, { Component } from 'react'
+import { GifSearch } from 'expo-tenor-search'
 
-import MyComponent from 'expo-tenor-search'
-import 'expo-tenor-search/dist/index.css'
-
-class Example extends Component {
-  render() {
-    return <MyComponent />
+export default function GifScreen() {
+  const handleGifSelect = (gifUrl) => {
+    console.log(`Selected GIF: ${gifUrl}`)
   }
+
+  return (
+    <GifSearch
+      tenorkey={'xxx-xxx-xxx-xxx'}
+      MediaFilter={'minimal'}
+      onGifSelect={handleGifSelect}
+    />
+  )
 }
 ```
 
