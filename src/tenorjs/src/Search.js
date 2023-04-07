@@ -6,7 +6,7 @@ const Find = require('./Methods/Search/Find');
 const Query = require('./Methods/Search/Query');
 const Random = require('./Methods/Search/Random');
 
-export default function Search(Credentials, Utilities) {
+module.exports = function (Credentials, Utilities) {
   const Methods = {};
 
   Methods.Find = function (IDs, Callback) {

@@ -5,7 +5,7 @@ const Terms = require('./Methods/Trending/Terms');
 const GIFs = require('./Methods/Trending/GIFs');
 
 
-export default function (Credentials, Utilities) {
+module.exports = function (Credentials, Utilities) {
     const Methods = {};
 
     Methods.GIFs = function (Limit, Callback) {

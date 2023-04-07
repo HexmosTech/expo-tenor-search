@@ -4,7 +4,7 @@
 const listTags = require('./Methods/Categories/Tags')
 const findCategories = require('./Methods/Categories/Find')
 
-export default function (Credentials, Utilities) {
+module.exports = function (Credentials, Utilities) {
   const Methods = {};
 
   Methods.Find = function (Tag, Limit, Callback) {
