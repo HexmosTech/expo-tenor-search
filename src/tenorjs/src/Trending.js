@@ -1,8 +1,8 @@
 // import GIFs  from './Trending/GIFs';
 // import Terms from './Trending/Terms';
 
-const Terms = require('./Trending/Terms');
-const GIFs = require('./Trending/GIFs');
+const Terms = require('./Methods/Trending/Terms');
+const GIFs = require('./Methods/Trending/GIFs');
 
 
 export default function (Credentials, Utilities) {

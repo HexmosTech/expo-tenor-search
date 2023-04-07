@@ -1,9 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 const Utilities = require('./Tools/Utilities');
-const Trending = require('./Methods/Trending');
-const Categories = require('./Methods/Categories');
-const Search = require('./Methods/Search');
+const Trending = require('./Trending');
+const Categories = require('./Categories');
+const Search = require('./Search');
 
 
 
