@@ -36,6 +36,10 @@ export default function GifScreen() {
 }
 ```
 
+![gifs caregories](./01a84abb-ebe6-4815-bdf5-07509c4b78d4.jpeg)
+
+![gifs](./a268ff98-8703-4946-83fc-0d468cfa1fe3.jpeg)
+
 ## License
 
 MIT © [Hexmos Technologies](https://github.com/Hexmos Technologies)
