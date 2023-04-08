@@ -1,30 +1,24 @@
 {
-  "name": "expo-tenor-search-example",
-  "homepage": ".",
-  "version": "0.0.0",
-  "private": true,
+  "name": "gitsearchtest",
+  "version": "1.0.0",
+  "main": "node_modules/expo/AppEntry.js",
   "scripts": {
-    "start": "node ../node_modules/react-scripts/bin/react-scripts.js start",
-    "build": "node ../node_modules/react-scripts/bin/react-scripts.js build",
-    "test": "node ../node_modules/react-scripts/bin/react-scripts.js test",
-    "eject": "node ../node_modules/react-scripts/bin/react-scripts.js eject"
+    "start": "expo start",
+    "android": "expo start --android",
+    "ios": "expo start --ios",
+    "web": "expo start --web"
   },
   "dependencies": {
-    "react": "link:../node_modules/react",
-    "react-dom": "link:../node_modules/react-dom",
-    "react-scripts": "link:../node_modules/react-scripts",
-    "expo-tenor-search": "link:.."
+    "biglist-with-tabs": "^1.0.1",
+    "expo": "~48.0.9",
+    "expo-status-bar": "~1.4.4",
+    "expo-tenor-search": "^1.0.11",
+    "image-lodar": "rogueloop/image-loader.git#master",
+    "react": "18.2.0",
+    "react-native": "0.71.4"
   },
   "devDependencies": {
-    "@babel/plugin-syntax-object-rest-spread": "^7.8.3"
+    "@babel/core": "^7.20.0"
   },
-  "eslintConfig": {
-    "extends": "react-app"
-  },
-  "browserslist": [
-    ">0.2%",
-    "not dead",
-    "not ie <= 11",
-    "not op_mini all"
-  ]
+  "private": true
 }
