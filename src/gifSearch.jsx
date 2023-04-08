@@ -1,14 +1,8 @@
 import React, { useEffect, useState } from 'react'
-import {
-  View,
-  Text,
-  TextInput,
-  TouchableOpacity,
-} from 'react-native'
+import { View, Text, TextInput, TouchableOpacity } from 'react-native'
 import tenor from './tenorjs'
 import { WebView } from 'react-native-webview'
 const he = require('he')
-
 
 export default function GifSearch({ tenorkey, MediaFilter, onGifSelect }) {
   const [jsonString, setJsonString] = useState(null)
@@ -24,7 +18,7 @@ export default function GifSearch({ tenorkey, MediaFilter, onGifSelect }) {
     Filter: 'off',
     Locale: 'en_US',
     MediaFilter: myFilter,
-    DateFormat: 'D/MM/YYYY - H:mm:ss A',
+    DateFormat: 'D/MM/YYYY - H:mm:ss A'
   })
 
   let htmlPage = `<!DOCTYPE html>  <html lang=\"en\"><head><meta charset=\"UTF-8\" /><meta http-equiv=\"X-UA-Compatible\" content=\"IE=edge\" /><meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\" /><title>Trending</title><style>  .gpr-search {padding: 10px;margin-right: 10px;font-size: 16px;border-radius: 5px;border: 1px solid #ccc;width: 300px;}.gpr-search-container {display: flex;align-items: center;background-color: #f5f5f5;border-radius: 4px;padding: 8px;} button { background-color: transparent; border: none; padding: 0; margin: 0; font: inherit; color: inherit; cursor: pointer; appearance: none; } .row {display: flex;flex-wrap: wrap;}.column {max-width: 50%;padding: 0px 5px;flex-grow: 100;position: relative;text-align: center;flex-grow: 1;}.gif-text {color: white;font-size: 20px;font-weight: bold;position: absolute;top: 50%;left: 50%;transform: translate(-50%, -50%);overflow: hidden;}@media screen and (max-width: 300px) {.column {  width: 100%;}}.row:after {content: \"\";display: table;clear: both;max-width: 100%;text-align: center;}* {box-sizing: border-box;}img {max-width: 100%;height: 200px;width: 100%;object-fit: cover;} .search-wrapper {position: relative;display: inline-block;} .close {position: absolute;top: 50%;right: 20px;transform: translateY(-50%);font-size: 45px;font-weight: 600;} </style>   </head> `
@@ -43,7 +37,7 @@ export default function GifSearch({ tenorkey, MediaFilter, onGifSelect }) {
       setPreviousCategory(data.nativeEvent.data)
     }
   }
-  
+
   // List of gifs
   useEffect(() => {
     if (selectedCategory === 'selectedGif') {
@@ -139,35 +133,47 @@ export default function GifSearch({ tenorkey, MediaFilter, onGifSelect }) {
             height: 40,
             borderColor: 'gray',
             borderWidth: 1,
-            borderRadius: 4,
+            borderRadius: 4
           }}
         >
           <TextInput
             style={{
               flex: 1,
               height: 40,
-              paddingLeft: 10,
+              paddingLeft: 10
             }}
-            placeholder="Search for GIFs"
+            placeholder='Search for GIFs'
             onChangeText={(text) => setSelectedCategory(text)}
             value={selectedCategory}
           />
           {selectedCategory ? (
-            <TouchableOpacity onPress={onCloseButtonPress}>
-              <Text
+            <TouchableOpacity
+              onPress={onCloseButtonPress}
+              style={{ paddingRight: 5 }}
+            >
+              <View
                 style={{
-                  color: 'red',
-                  fontWeight: 'bold',
-                  fontSize: 20,
-                  backgroundColor: 'white',
-                  padding: 5,
+                  width: 20,
+                  height: 20,
+                  backgroundColor: '#F6F6F6',
                   borderRadius: 10,
-                  border: '1px solid black',
-                  cursor: 'pointer',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  borderWidth: 1,
+                  borderColor: '#D1D1D1'
                 }}
               >
-                X
-              </Text>
+                <Text
+                  style={{
+                    color: '#777777',
+                    fontSize: 18,
+                    lineHeight: 20,
+                    textAlign: 'center'
+                  }}
+                >
+                  X
+                </Text>
+              </View>
             </TouchableOpacity>
           ) : null}
         </View>
@@ -178,7 +184,7 @@ export default function GifSearch({ tenorkey, MediaFilter, onGifSelect }) {
           source={{ html: jsonString }}
           javaScriptEnabled={true}
           onMessage={onMessage}
-          mixedContentMode="compatibility"
+          mixedContentMode='compatibility'
           scalesPageToFit={false}
         />
       ) : (

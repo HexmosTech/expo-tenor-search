@@ -11,7 +11,7 @@ export default function App() {
   return (
     <View style={{ width: '100%', height: 90, flex: 1, flexDirection: 'row', marginBottom: 15 }}>
       <GifSearch
-        tenorkey={'<tenor api key>'}
+        tenorkey={'xxxxx-xxxxx'}
         MediaFilter={'minimal'}
         onGifSelect={handleGifSelect}
       />
