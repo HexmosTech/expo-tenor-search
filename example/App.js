@@ -1,6 +1,6 @@
 import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View } from 'react-native';
-import { GifSearch } from 'expo-tenor-search';
+import GifSearch from 'expo-tenor-search';
 
 export default function App() {
 
@@ -11,7 +11,7 @@ export default function App() {
   return (
     <View style={{ width: '100%', height: 90, flex: 1, flexDirection: 'row', marginBottom: 15 }}>
       <GifSearch
-        tenorkey={'xxxxx-xxxxx'}
+        tenorkey={'XXXXXXXXXXX'}
         MediaFilter={'minimal'}
         onGifSelect={handleGifSelect}
       />
