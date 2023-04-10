@@ -8,7 +8,8 @@ export default function GifSearch({ tenorkey, MediaFilter, onGifSelect }) {
   const [jsonString, setJsonString] = useState(null)
   const [selectedCategory, setSelectedCategory] = useState(null)
   const [selectedGif, setSelectedGif] = useState(null)
-  const [previousCategory, setPreviousCategory] = useState(false)
+  const [previousCategory, setPreviousCategory] = useState(null)
+  const [gifSearchData , setGifSearchData] = useState(null)
 
   const myKey = tenorkey
   const myFilter = MediaFilter
@@ -26,6 +27,7 @@ export default function GifSearch({ tenorkey, MediaFilter, onGifSelect }) {
   function onMessage(data) {
     if (data.nativeEvent.data === 'removecategorie') {
       setSelectedCategory(null)
+      setGifSearchData(null)
     } else if (
       typeof data.nativeEvent.data === 'string' &&
       data.nativeEvent.data.includes('https://')
@@ -34,6 +36,7 @@ export default function GifSearch({ tenorkey, MediaFilter, onGifSelect }) {
       setSelectedCategory('selectedGif')
     } else {
       setSelectedCategory(data.nativeEvent.data)
+      setGifSearchData(data.nativeEvent.data)
       setPreviousCategory(data.nativeEvent.data)
     }
   }
@@ -121,6 +124,7 @@ export default function GifSearch({ tenorkey, MediaFilter, onGifSelect }) {
 
   const onCloseButtonPress = () => {
     setSelectedCategory(null)
+    setGifSearchData(null)
   }
   return (
     <View style={{ flex: 1 }}>
@@ -143,8 +147,11 @@ export default function GifSearch({ tenorkey, MediaFilter, onGifSelect }) {
               paddingLeft: 10
             }}
             placeholder='Search for GIFs'
-            onChangeText={(text) => setSelectedCategory(text)}
-            value={selectedCategory}
+            onChangeText={(text) => {
+              setSelectedCategory(text);
+              setGifSearchData(text);
+            }}
+            value={gifSearchData}
           />
           {selectedCategory ? (
             <TouchableOpacity

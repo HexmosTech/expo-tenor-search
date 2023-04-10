@@ -3128,10 +3128,10 @@ expo-status-bar@~1.4.4:
   resolved "https://registry.yarnpkg.com/expo-status-bar/-/expo-status-bar-1.4.4.tgz#6874ccfda5a270d66f123a9f220735a76692d114"
   integrity sha512-5DV0hIEWgatSC3UgQuAZBoQeaS9CqeWRZ3vzBR9R/+IUD87Adbi4FGhU10nymRqFXOizGsureButGZIXPs7zEA==
 
-expo-tenor-search@^1.0.11:
-  version "1.0.11"
-  resolved "https://registry.yarnpkg.com/expo-tenor-search/-/expo-tenor-search-1.0.11.tgz#0cd94eee8076bdb587a0995fcba24493cfc4a8bc"
-  integrity sha512-lUmtr/6mA/g9TwSCSRff9mRbBYlCTdBQmnAr3xlHDQuZLivwcEg29rbqinxCzG+g5Jyy7aiNhPjzAkDkQj9rZQ==
+expo-tenor-search@^1.0.17:
+  version "1.0.17"
+  resolved "https://registry.yarnpkg.com/expo-tenor-search/-/expo-tenor-search-1.0.17.tgz#49cbf657fa008e6bfa58f76f6ba4fca11adce20f"
+  integrity sha512-rIYgm9FwNks+4xOc8KOjwX96YHb5GNGCtjFCg5tS0CwJ8LzTpRFMg79t7ax7fzDAGxPDdiXQwou444dfEX8oeA==
   dependencies:
     he "^1.2.0"
     react-native-webview "^12.0.0"
@@ -3672,10 +3672,6 @@ ignore@^5.2.0:
   version "5.2.4"
   resolved "https://registry.yarnpkg.com/ignore/-/ignore-5.2.4.tgz#a291c0c6178ff1b960befe47fcdec301674a6324"
   integrity sha512-MAb38BcSbH0eHNBxn7ql2NH/kX33OkB3lZ1BNdh7ENeRChHTYsTvWrMubiIAMNS2llXEEgZ1MUOBtXChP3kaFQ==
-
-image-lodar@rogueloop/image-loader.git#master:
-  version "1.0.1"
-  resolved "https://codeload.github.com/rogueloop/image-loader/tar.gz/54d3e5638cb3841168b9d561661c434d5be3400c"
 
 image-size@^0.6.0:
   version "0.6.3"
