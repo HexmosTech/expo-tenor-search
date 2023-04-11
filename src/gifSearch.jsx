@@ -104,23 +104,23 @@ export default function GifSearch({ tenorkey, MediaFilter, onGifSelect }) {
   }, [jsonString, selectedCategory])
 
   // On selection fo a gif
-  useEffect(() => {
-    htmlPage += '<body> <div class="row">'
-    htmlPage += `<div class="column"><button onclick="sendDataToReactNativeApp('${selectedGif}')" 
-        ></button>`
-    htmlPage += `<img src="${selectedGif}" />`
-    htmlPage += `</div>`
-    htmlPage +=
-      '</div> <script>    const sendDataToReactNativeApp = async (data) => {    window.ReactNativeWebView.postMessage(data);    };    </script> </body>  </html>  '
-    const escapedHtml = he
-      .encode(htmlPage)
-      .replace(/"/g, '\\"')
-      .replace(/\n/g, '')
-    const decodedHtml = he.decode(escapedHtml)
-    const resultingJson = JSON.stringify({ html: decodedHtml })
-    const jsonResults = JSON.parse(resultingJson)
-    setJsonString(jsonResults['html'])
-  }, [selectedGif])
+  // useEffect(() => {
+  //   htmlPage += '<body> <div class="row">'
+  //   htmlPage += `<div class="column"><button onclick="sendDataToReactNativeApp('${selectedGif}')" 
+  //       ></button>`
+  //   htmlPage += `<img src="${selectedGif}" />`
+  //   htmlPage += `</div>`
+  //   htmlPage +=
+  //     '</div> <script>    const sendDataToReactNativeApp = async (data) => {    window.ReactNativeWebView.postMessage(data);    };    </script> </body>  </html>  '
+  //   const escapedHtml = he
+  //     .encode(htmlPage)
+  //     .replace(/"/g, '\\"')
+  //     .replace(/\n/g, '')
+  //   const decodedHtml = he.decode(escapedHtml)
+  //   const resultingJson = JSON.stringify({ html: decodedHtml })
+  //   const jsonResults = JSON.parse(resultingJson)
+  //   setJsonString(jsonResults['html'])
+  // }, [selectedGif])
 
   const onCloseButtonPress = () => {
     setSelectedCategory(null)
