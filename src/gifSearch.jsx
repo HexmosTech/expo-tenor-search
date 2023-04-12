@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from 'react'
-import { View, Text, TextInput, TouchableOpacity } from 'react-native'
+import { View, Text, TextInput, TouchableOpacity,StyleSheet } from 'react-native'
 import tenor from './tenorjs'
 import { WebView } from 'react-native-webview'
 const he = require('he')
 
-export default function GifSearch({ tenorkey, MediaFilter, onGifSelect }) {
+export default function GifSearch({ tenorkey, MediaFilter, onGifSelect,styles }) {
   const [jsonString, setJsonString] = useState(null)
   const [selectedCategory, setSelectedCategory] = useState(null)
   const [selectedGif, setSelectedGif] = useState(null)
@@ -103,42 +103,82 @@ export default function GifSearch({ tenorkey, MediaFilter, onGifSelect }) {
     }
   }, [jsonString, selectedCategory])
 
-  // On selection fo a gif
-  // useEffect(() => {
-  //   htmlPage += '<body> <div class="row">'
-  //   htmlPage += `<div class="column"><button onclick="sendDataToReactNativeApp('${selectedGif}')" 
-  //       ></button>`
-  //   htmlPage += `<img src="${selectedGif}" />`
-  //   htmlPage += `</div>`
-  //   htmlPage +=
-  //     '</div> <script>    const sendDataToReactNativeApp = async (data) => {    window.ReactNativeWebView.postMessage(data);    };    </script> </body>  </html>  '
-  //   const escapedHtml = he
-  //     .encode(htmlPage)
-  //     .replace(/"/g, '\\"')
-  //     .replace(/\n/g, '')
-  //   const decodedHtml = he.decode(escapedHtml)
-  //   const resultingJson = JSON.stringify({ html: decodedHtml })
-  //   const jsonResults = JSON.parse(resultingJson)
-  //   setJsonString(jsonResults['html'])
-  // }, [selectedGif])
+  //  On selection fo a gif
+  useEffect(() => {
+    Tenor.search
+        .Query(gifSearchData, '30')
+        .then((Results) => {
+          htmlPage += `<body>`
+          htmlPage += '<div class="row">'
+          let count = 0
+          Results.forEach((Category) => {
+            htmlPage += `<div class="column"><button onclick="sendDataToReactNativeApp('${Category.media_formats.gif.url}')"
+      >`
+            htmlPage += `<img src="${
+              Category.media_formats.gif.url
+            }" alt="Image${count + 1}" />`
+            htmlPage += `</button></div>`
+            count++
+          })
+          htmlPage += `</div> <script>    const sendDataToReactNativeApp = async (data) => {   window.ReactNativeWebView.postMessage(data);    }; const removeCategorie = async() =>{window.ReactNativeWebView.postMessage("removecategorie"); }; </script> </body>  </html>  `
+          const escapedHtml = he
+            .encode(htmlPage)
+            .replace(/"/g, '\\"')
+            .replace(/\n/g, '')
+          const decodedHtml = he.decode(escapedHtml)
+          const resultingJson = JSON.stringify({ html: decodedHtml })
+          const jsonResults = JSON.parse(resultingJson)
+          setJsonString(jsonResults['html'])
+        })
+        .catch(console.error)
+  }, [selectedGif])
+
+
 
   const onCloseButtonPress = () => {
     setSelectedCategory(null)
     setGifSearchData(null)
   }
+  const defaultStyles = StyleSheet.create({
+    searchContainer: {
+      flex: 1,
+      flexDirection: 'row',
+      alignItems: 'center',
+      height: 40,
+      borderColor: 'gray',
+      borderWidth: 1,
+      borderRadius: 4
+    },
+    closeButton: {
+      width: 20,
+      height: 20,
+      backgroundColor: '#F6F6F6',
+      borderRadius: 10,
+      alignItems: 'center',
+      justifyContent: 'center',
+      borderWidth: 1,
+      borderColor: '#D1D1D1'
+    },
+    closeButtonText: {
+      color: '#777777',
+      fontSize: 18,
+      lineHeight: 20,
+      textAlign: 'center'
+    }
+  });
+
+  const mergedStyles = {
+    ...defaultStyles,
+    ...styles,
+    
+  }
+  
+
   return (
     <View style={{ flex: 1 }}>
       <View style={{ flexDirection: 'row', alignItems: 'center', padding: 10 }}>
         <View
-          style={{
-            flex: 1,
-            flexDirection: 'row',
-            alignItems: 'center',
-            height: 40,
-            borderColor: 'gray',
-            borderWidth: 1,
-            borderRadius: 4
-          }}
+          style={mergedStyles.searchContainer}
         >
           <TextInput
             style={{
@@ -159,24 +199,10 @@ export default function GifSearch({ tenorkey, MediaFilter, onGifSelect }) {
               style={{ paddingRight: 5 }}
             >
               <View
-                style={{
-                  width: 20,
-                  height: 20,
-                  backgroundColor: '#F6F6F6',
-                  borderRadius: 10,
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                  borderWidth: 1,
-                  borderColor: '#D1D1D1'
-                }}
+                style={mergedStyles.closeButton}
               >
                 <Text
-                  style={{
-                    color: '#777777',
-                    fontSize: 18,
-                    lineHeight: 20,
-                    textAlign: 'center'
-                  }}
+                  style={mergedStyles.closeButtonText}
                 >
                   X
                 </Text>
