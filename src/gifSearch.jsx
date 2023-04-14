@@ -5,6 +5,8 @@ import { WebView } from 'react-native-webview'
 const he = require('he')
 
 export default function GifSearch({ tenorkey, MediaFilter, onGifSelect,styles }) {
+ 
+  
   const [jsonString, setJsonString] = useState(null)
   const [selectedCategory, setSelectedCategory] = useState(null)
   const [selectedGif, setSelectedGif] = useState(null)
@@ -29,7 +31,6 @@ export default function GifSearch({ tenorkey, MediaFilter, onGifSelect,styles })
       setSelectedCategory(null)
       setGifSearchData(null)
     } else if (
-      typeof data.nativeEvent.data === 'string' &&
       data.nativeEvent.data.includes('https://')
     ) {
       setSelectedGif(data.nativeEvent.data)
@@ -45,7 +46,9 @@ export default function GifSearch({ tenorkey, MediaFilter, onGifSelect,styles })
   useEffect(() => {
     if (selectedCategory === 'selectedGif') {
       onGifSelect(selectedGif)
+      setSelectedCategory(gifSearchData)
     } else if (selectedCategory != null) {
+      console.log("somethinh")
       Tenor.search
         .Query(selectedCategory, '30')
         .then((Results) => {
@@ -132,8 +135,6 @@ export default function GifSearch({ tenorkey, MediaFilter, onGifSelect,styles })
         })
         .catch(console.error)
   }, [selectedGif])
-
-
 
   const onCloseButtonPress = () => {
     setSelectedCategory(null)
