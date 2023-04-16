@@ -3128,10 +3128,10 @@ expo-status-bar@~1.4.4:
   resolved "https://registry.yarnpkg.com/expo-status-bar/-/expo-status-bar-1.4.4.tgz#6874ccfda5a270d66f123a9f220735a76692d114"
   integrity sha512-5DV0hIEWgatSC3UgQuAZBoQeaS9CqeWRZ3vzBR9R/+IUD87Adbi4FGhU10nymRqFXOizGsureButGZIXPs7zEA==
 
-expo-tenor-search@^1.0.17:
-  version "1.0.17"
-  resolved "https://registry.yarnpkg.com/expo-tenor-search/-/expo-tenor-search-1.0.17.tgz#49cbf657fa008e6bfa58f76f6ba4fca11adce20f"
-  integrity sha512-rIYgm9FwNks+4xOc8KOjwX96YHb5GNGCtjFCg5tS0CwJ8LzTpRFMg79t7ax7fzDAGxPDdiXQwou444dfEX8oeA==
+expo-tenor-search@^1.0.21:
+  version "1.0.21"
+  resolved "https://registry.yarnpkg.com/expo-tenor-search/-/expo-tenor-search-1.0.21.tgz#fa7f04bc5268e741ee3b63e305a82e30a0cd3548"
+  integrity sha512-N3cSuDnHW5WFzpogazV6xFpzQ4DfbFfaSH9+qmrFaGBlknMhrwXuOqXUlSv44vUWg3oYYmlcN2tnGFuFxFanDg==
   dependencies:
     he "^1.2.0"
     react-native-webview "^12.0.0"

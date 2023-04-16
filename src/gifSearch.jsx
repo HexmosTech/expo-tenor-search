@@ -4,7 +4,7 @@ import tenor from './tenorjs'
 import { WebView } from 'react-native-webview'
 const he = require('he')
 
-export default function GifSearch({ tenorkey, MediaFilter, onGifSelect,styles }) {
+export default function GifSearch({ tenorkey, MediaFilter, onGifSelect,styles,gifStyles }) {
  
   
   const [jsonString, setJsonString] = useState(null)
@@ -24,7 +24,74 @@ export default function GifSearch({ tenorkey, MediaFilter, onGifSelect,styles })
     DateFormat: 'D/MM/YYYY - H:mm:ss A'
   })
 
-  let htmlPage = `<!DOCTYPE html>  <html lang=\"en\"><head><meta charset=\"UTF-8\" /><meta http-equiv=\"X-UA-Compatible\" content=\"IE=edge\" /><meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\" /><title>Trending</title><style>  .gpr-search {padding: 10px;margin-right: 10px;font-size: 16px;border-radius: 5px;border: 1px solid #ccc;width: 300px;}.gpr-search-container {display: flex;align-items: center;background-color: #f5f5f5;border-radius: 4px;padding: 8px;} button { background-color: transparent; border: none; padding: 0; margin: 0; font: inherit; color: inherit; cursor: pointer; appearance: none; } .row {display: flex;flex-wrap: wrap;}.column {max-width: 50%;padding: 0px 5px;flex-grow: 100;position: relative;text-align: center;flex-grow: 1;}.gif-text {color: white;font-size: 20px;font-weight: bold;position: absolute;top: 50%;left: 50%;transform: translate(-50%, -50%);overflow: hidden;}@media screen and (max-width: 300px) {.column {  width: 100%;}}.row:after {content: \"\";display: table;clear: both;max-width: 100%;text-align: center;}* {box-sizing: border-box;}img {max-width: 100%;height: 200px;width: 100%;object-fit: cover;} .search-wrapper {position: relative;display: inline-block;} .close {position: absolute;top: 50%;right: 20px;transform: translateY(-50%);font-size: 45px;font-weight: 600;} </style>   </head> `
+
+  initialStyles = `
+  * {box-sizing: border-box;}
+  @media screen and (max-width: 300px) {.column {  width: 100%;}}.row:after {display: table;clear: both;max-width: 100%;text-align: center;}
+  `
+  const cssObject = {
+    button: {
+      backgroundColor: "transparent",
+      border: "none",
+      padding: "0",
+      margin: "0",
+      font: "inherit",
+      color: "inherit",
+      cursor: "pointer",
+      appearance: "none"
+    },
+    ".row": { display: "flex", flexWrap: "wrap" },
+    ".column": {
+      "max-width": "50%",
+      padding: "0px 5px",
+      flexGrow: 100,
+      position: "relative",
+      textAlign: "center"
+    },
+    ".giftext": {
+      color: "white",
+      fontSize: "20px",
+      fontWeight: "bold",
+      position: "absolute",
+      top: "50%",
+      left: "50%",
+      transform: "translate(-50%, -50%)",
+      overflow: "hidden"
+    },
+    img: { maxWidth: "100%", height: "200px", width: "100%", objectFit: "cover" }
+  }
+
+  const returnedTarget = Object.assign(cssObject, gifStyles);
+  console.log(returnedTarget)
+  
+
+  function convertKeys(obj) {
+    return Object.keys(obj).reduce((acc, key) => {
+      const kebabKey = key.replace(/[A-Z]/g, match => `-${match.toLowerCase()}`);
+      acc[kebabKey] = typeof obj[key] === 'object' ? convertKeys(obj[key]) : obj[key];
+      return acc;
+    }, {});
+  }
+  
+  const stylesWithKebabKeys = convertKeys(cssObject);
+  
+// object to string 1 fais 
+const cssString = Object.keys(stylesWithKebabKeys)
+  .map(selector => {
+    const rules = stylesWithKebabKeys[selector];
+    const rulesString = Object.keys(rules)
+      .map(property => `${property}: ${rules[property]};`)
+      .join('\n');
+    return `${selector} {\n${rulesString}\n}`;
+  })
+  .join('\n');
+
+
+const allCSS = cssString + initialStyles
+  let htmlPage = `<!DOCTYPE html>  <html lang=\"en\"><head><meta charset=\"UTF-8\" /><meta http-equiv=\"X-UA-Compatible\" content=\"IE=edge\" /><meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\" /><title>Trending</title>
+  <style>${allCSS}</style>
+  </head> `
+  // console.log(htmlPage)
 
   function onMessage(data) {
     if (data.nativeEvent.data === 'removecategorie') {
@@ -48,7 +115,6 @@ export default function GifSearch({ tenorkey, MediaFilter, onGifSelect,styles })
       onGifSelect(selectedGif)
       setSelectedCategory(gifSearchData)
     } else if (selectedCategory != null) {
-      console.log("somethinh")
       Tenor.search
         .Query(selectedCategory, '30')
         .then((Results) => {
@@ -56,9 +122,9 @@ export default function GifSearch({ tenorkey, MediaFilter, onGifSelect,styles })
           htmlPage += '<div class="row">'
           let count = 0
           Results.forEach((Category) => {
-            htmlPage += `<div class="column"><button onclick="sendDataToReactNativeApp('${Category.media_formats.gif.url}')"
+            htmlPage += `<div class="column"><button class="gifButton" onclick="sendDataToReactNativeApp('${Category.media_formats.gif.url}')"
       >`
-            htmlPage += `<img src="${
+            htmlPage += `<img class="gif-img" src="${
               Category.media_formats.gif.url
             }" alt="Image${count + 1}" />`
             htmlPage += `</button></div>`
@@ -85,10 +151,10 @@ export default function GifSearch({ tenorkey, MediaFilter, onGifSelect,styles })
           Results.forEach((Category) => {
             htmlPage += `<div class="column"><button onclick="sendDataToReactNativeApp('${Category.searchterm}')"
         >`
-            htmlPage += `<img src="${Category.image}" alt="Image${
+            htmlPage += `<img class="gif-img" src="${Category.image}" alt="Image${
               count + 1
             }" style="filter: brightness(50%);"/>`
-            htmlPage += `<div class="gif-text">${Category.searchterm}</div></button></div>`
+            htmlPage += `<div class="giftext">${Category.searchterm}</div></button></div>`
             count++
           })
           htmlPage +=
@@ -117,7 +183,7 @@ export default function GifSearch({ tenorkey, MediaFilter, onGifSelect,styles })
           Results.forEach((Category) => {
             htmlPage += `<div class="column"><button onclick="sendDataToReactNativeApp('${Category.media_formats.gif.url}')"
       >`
-            htmlPage += `<img src="${
+            htmlPage += `<img class="gif-img" src="${
               Category.media_formats.gif.url
             }" alt="Image${count + 1}" />`
             htmlPage += `</button></div>`

@@ -20,6 +20,15 @@ export default function App() {
     }
   };
 
+  const gifStyles = {
+    img: {
+      maxWidth: "100%",
+      height: "200px",
+      width: "100%",
+      objectFit: "cover",    
+      borderRadius: "10px"
+    }
+  }
   return (
     <View style={{ width: '100%', height: 90, flex: 1, flexDirection: 'row', marginBottom: 15 }}>
       <GifSearch
@@ -27,6 +36,7 @@ export default function App() {
         MediaFilter={'minimal'}
         onGifSelect={handleGifSelect}
         styles={styles}
+        gifStyles={gifStyles}
       />
     </View>
   );
