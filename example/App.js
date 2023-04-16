@@ -10,22 +10,12 @@ export default function App() {
 
   const styles = {
     searchContainer: {
-      flex: 1,
-      flexDirection: 'row',
-      alignItems: 'center',
-      height: 40,
-      borderColor: 'blue',
-      borderWidth: 1,
-      borderRadius: 4,
+      height: 45,
     }
   };
 
   const gifStyles = {
-    img: {
-      maxWidth: "100%",
-      height: "200px",
-      width: "100%",
-      objectFit: "cover",    
+    img: {   
       borderRadius: "10px"
     }
   }

@@ -25,7 +25,7 @@ export default function GifSearch({ tenorkey, MediaFilter, onGifSelect,styles,gi
   })
 
 
-  initialStyles = `
+  const initialStyles = `
   * {box-sizing: border-box;}
   @media screen and (max-width: 300px) {.column {  width: 100%;}}.row:after {display: table;clear: both;max-width: 100%;text-align: center;}
   `
@@ -61,9 +61,14 @@ export default function GifSearch({ tenorkey, MediaFilter, onGifSelect,styles,gi
     img: { maxWidth: "100%", height: "200px", width: "100%", objectFit: "cover" }
   }
 
-  const returnedTarget = Object.assign(cssObject, gifStyles);
-  console.log(returnedTarget)
-  
+
+  const gifStyleNames = Object.keys(cssObject);
+  for (const styleName of gifStyleNames) {
+       if (gifStyles[styleName]) {
+          cssObject[styleName] = { ...cssObject[styleName], ...gifStyles[styleName] };
+    }
+  }
+
 
   function convertKeys(obj) {
     return Object.keys(obj).reduce((acc, key) => {
@@ -234,18 +239,23 @@ const allCSS = cssString + initialStyles
     }
   });
 
-  const mergedStyles = {
-    ...defaultStyles,
-    ...styles,
-    
+  // list of keys
+  const styleNames = Object.keys(defaultStyles); 
+
+  for (const styleName of styleNames) {
+    if (styles[styleName]) {
+      defaultStyles[styleName] = { ...defaultStyles[styleName], ...styles[styleName] };
+    }
   }
   
+
+
 
   return (
     <View style={{ flex: 1 }}>
       <View style={{ flexDirection: 'row', alignItems: 'center', padding: 10 }}>
         <View
-          style={mergedStyles.searchContainer}
+          style={defaultStyles.searchContainer}
         >
           <TextInput
             style={{
@@ -266,10 +276,10 @@ const allCSS = cssString + initialStyles
               style={{ paddingRight: 5 }}
             >
               <View
-                style={mergedStyles.closeButton}
+                style={defaultStyles.closeButton}
               >
                 <Text
-                  style={mergedStyles.closeButtonText}
+                  style={defaultStyles.closeButtonText}
                 >
                   X
                 </Text>
