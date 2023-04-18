@@ -4,9 +4,11 @@ import tenor from './tenorjs'
 import { WebView } from 'react-native-webview'
 const he = require('he')
 
-export default function GifSearch({ tenorkey, MediaFilter, onGifSelect,styles,gifStyles }) {
+export default function GifSearch({ tenorkey, MediaFilter, onGifSelect,styles }) {
  
-  
+  const SearchBoxstyles = styles["searchbox"]
+  const gifStyles = styles["gifbox"]
+
   const [jsonString, setJsonString] = useState(null)
   const [selectedCategory, setSelectedCategory] = useState(null)
   const [selectedGif, setSelectedGif] = useState(null)
@@ -96,7 +98,6 @@ const allCSS = cssString + initialStyles
   let htmlPage = `<!DOCTYPE html>  <html lang=\"en\"><head><meta charset=\"UTF-8\" /><meta http-equiv=\"X-UA-Compatible\" content=\"IE=edge\" /><meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\" /><title>Trending</title>
   <style>${allCSS}</style>
   </head> `
-  // console.log(htmlPage)
 
   function onMessage(data) {
     if (data.nativeEvent.data === 'removecategorie') {
@@ -105,6 +106,7 @@ const allCSS = cssString + initialStyles
     } else if (
       data.nativeEvent.data.includes('https://')
     ) {
+      console.log("data:",data)
       setSelectedGif(data.nativeEvent.data)
       setSelectedCategory('selectedGif')
     } else {
@@ -243,8 +245,8 @@ const allCSS = cssString + initialStyles
   const styleNames = Object.keys(defaultStyles); 
 
   for (const styleName of styleNames) {
-    if (styles[styleName]) {
-      defaultStyles[styleName] = { ...defaultStyles[styleName], ...styles[styleName] };
+    if (SearchBoxstyles[styleName]) {
+      defaultStyles[styleName] = { ...defaultStyles[styleName], ...SearchBoxstyles[styleName] };
     }
   }
   

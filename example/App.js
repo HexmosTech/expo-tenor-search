@@ -9,14 +9,15 @@ export default function App() {
   }
 
   const styles = {
-    searchContainer: {
-      height: 45,
-    }
-  };
-
-  const gifStyles = {
-    img: {   
-      borderRadius: "10px"
+    searchbox: {
+      searchContainer: {
+        height: 45,
+      }
+    },
+    gifbox: {
+      img: {
+        borderRadius: "10px"
+      }
     }
   }
   return (
@@ -26,7 +27,6 @@ export default function App() {
         MediaFilter={'minimal'}
         onGifSelect={handleGifSelect}
         styles={styles}
-        gifStyles={gifStyles}
       />
     </View>
   );
