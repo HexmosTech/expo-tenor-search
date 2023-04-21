@@ -4,7 +4,7 @@
 
 [![NPM](https://img.shields.io/npm/v/expo-tenor-search.svg)](https://www.npmjs.com/package/expo-tenor-search) [![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com)
 
-The expo-tenor-search component allows you to easily integrate Tenor GIFs into your React Native app. It features a user-friendly interface. This package is perfect for enhanceing your app's visual appeal and engage users with high-quality animated GIFs.
+The expo-tenor-search component allows you to easily integrate Tenor GIFs into your React Native app. It features a user-friendly interface. This package is perfect for enhancing your app's visual appeal and engaging users with high-quality animated GIFs.
 
 This package supports Tenor V2 APIs
 
@@ -44,7 +44,7 @@ To modify the styles of the gif, you can use the following selectors:
 * `.giftext`: Sets the style properties for an element with a class of "giftext". This selector affects the text shown in the gif categories page.
 * `img`: Sets the style properties for an img element.
 
-### Examle implementation
+### Example implementation
 
 ```jsx
 import { GifSearch } from 'expo-tenor-search'
