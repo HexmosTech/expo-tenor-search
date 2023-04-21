@@ -4,8 +4,8 @@ import GifSearch from 'expo-tenor-search';
 
 export default function App() {
 
-  const handleGifSelect = (gifUrl) => {
-    console.log(`Selected GIF: ${gifUrl}`)
+  const handleGifSelect = (data) => {
+    console.log(`Selected GIF Properties: ${data}`)
   }
 
   const styles = {
