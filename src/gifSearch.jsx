@@ -12,7 +12,7 @@ const he = require('he')
 
 export default function GifSearch({
   tenorkey,
-  MediaFilter,
+  Filter,
   onGifSelect,
   styles
 }) {
@@ -28,11 +28,11 @@ export default function GifSearch({
   const [selectedGifMetadata, setSelectedGifMetadata] = useState(null)
 
   const myKey = tenorkey
-  const myFilter = MediaFilter
-
+  const myFilter = 'gif'
+  const filterContent  = Filter
   const Tenor = tenor.client({
     Key: myKey,
-    Filter: 'off',
+    Filter: filterContent,
     Locale: 'en_US',
     MediaFilter: myFilter,
     DateFormat: 'D/MM/YYYY - H:mm:ss A'

@@ -21,8 +21,8 @@ yarn add expo-tenor-search
 The `GifSearch` component is the main feature of the extension.
 Here are the features of the GifSearch component based on the code provided:
 
-- Customizable Search Filters: You can customize the search filters to provide only the type of GIFs that you want to show in your app. In the code, the MediaFilter parameter is set to 'minimal', which limits the search results to only show GIFs that are safe for all ages.
-- Easy GIF Selection: The onGifSelect function is called when the user selects a GIF. A function `handleGifSelect` is provided that returns the selected GIF's URL.
+- Customizable Search Filters: You can customize the search filters to provide only the type of GIFs that you want to show in your app. In the code, the `Filter` parameter is set to `high`, which limits the search results to only show GIFs that are safe for all ages. Other values for Filter is - `off`,`low`, `medium`, 
+- Easy GIF Selection: The `onGifSelect` function is called when the user selects a GIF. A function `handleGifSelect` is provided that returns the selected GIF's URL.
 - Tenor API Key: To use the GifSearch component, you need to provide a Tenor API key. In the code, the tenorkey parameter is used to provide the API key. You can obtain an API key from Tenor's developer portal.
 
 ## What to do with the results 
@@ -69,7 +69,7 @@ export default function GifScreen() {
   return (
     <GifSearch
       tenorkey={'xxx-xxx-xxx-xxx'}
-      MediaFilter={'minimal'}
+      Filter={'minimal'}
       onGifSelect={handleGifSelect}
       styles={styles}
     />

@@ -24,7 +24,7 @@ export default function App() {
     <View style={{ width: '100%', height: 90, flex: 1, flexDirection: 'row', marginBottom: 15 }}>
       <GifSearch
         tenorkey={'xxxxxxxx'}
-        MediaFilter={'minimal'}
+        Filter={'high'}
         onGifSelect={handleGifSelect}
         styles={styles}
       />
